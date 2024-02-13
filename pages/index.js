@@ -1,17 +1,18 @@
 // pages/index.js
 
-import { Fragment, useEffect, useState } from "react"
-import ProductCard from "../components/ProductCard"
+import { Fragment, useEffect, useState } from 'react';
+import ProductCard from '../components/ProductCard';
 
-import {  callShopify, AllProducts } from "../helpers/shopify"
+import { callShopify, AllProducts } from '../helpers/shopify';
 
 const Home = ({ products }) => {
-const [data, setData] = useState()
-useEffect(() => {
-  const fetchData = async () => await callShopify(AllProducts)
-  const response = fetchData()
-  console.log('response=', response)
-}, [])
+  const [data, setData] = useState();
+  console.log(products);
+  useEffect(() => {
+    const fetchData = async () => await callShopify(AllProducts);
+    const response = fetchData();
+    console.log('response=', response);
+  }, []);
   return (
     <Fragment>
       <div className="text-center">
@@ -23,26 +24,28 @@ useEffect(() => {
         </p>
       </div>
       <div className="max-w-7xl flex flex-wrap mx-auto px-6 pt-10">
-      {/* {
-          products.map((product) => (
-            <ProductCard key={product.node.id} product={product} />
-        ))
-      } */}
+        {products.map((product) => {
+          return (
+            <ProductCard
+              key={product.node.id}
+              product={product}
+            />
+          );
+        })}
       </div>
     </Fragment>
-  )
+  );
+};
+
+export async function getStaticProps() {
+  const response = await callShopify(AllProducts);
+  const products = response.data.products.edges;
+
+  return {
+    props: {
+      products,
+    },
+  };
 }
 
-// export async function getStaticProps() {
-//   const response = await callShopify(AllProducts)
-// console.log('response', response)
-//   const products = response.data.products.edges
-
-//   return {
-//     props: {
-//       products
-//     },
-//   }
-// }
-
-export default Home
+export default Home;
