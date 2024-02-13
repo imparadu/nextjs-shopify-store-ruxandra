@@ -6,6 +6,9 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    maxWidth: {
+      '9/10': '90%'
+    },
     extend: {
       colors: {
         palette: {
