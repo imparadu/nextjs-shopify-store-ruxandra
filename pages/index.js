@@ -17,7 +17,7 @@ const Home = ({ products }) => {
     <Fragment>
       <div className="text-center">
         <h1 className="font-bold leading-tight text-palette-primary text-5xl mt-4 py-2 sm:py-4">
-          Your Home, Reimagined
+          Your Home, Reimagined, salut
         </h1>
         <p className="px-2 text-lg text-gray-600">
           Reimagine your living room with our sofas and chairs.
