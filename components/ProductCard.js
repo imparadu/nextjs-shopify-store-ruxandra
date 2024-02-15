@@ -7,12 +7,14 @@ const ProductCard = ({ product }) => {
   // console.log(product)
   const id = product.node.id;
   const handle = product.node.handle;
-  const title = product.node.title;
-  const imageNode = get(product, ['node', 'images', 'edges', '0', 'node']);
+  const title = product.node.title;``
+  // const imageNode = get(product, ['node', 'images', 'edges', '0', 'node']);
+  const imageNode = product.node.images.edges[0].node;
   const price = product.node.priceRange.maxVariantPrice.amount.replace(
     /\.0/g,
     ''
   );
+  console.log(product)
 
   return (
     <div className="">
