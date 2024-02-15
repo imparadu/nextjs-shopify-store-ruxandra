@@ -52,31 +52,7 @@ export const AllProducts = gql`
     }
   }
 `;
-export const queryPortfolio = gql`
-  query MyQuery {
-    collection(id: "gid://shopify/Collection/617744597319") {
-      title
-      handle
-      products(first: 10) {
-        edges {
-          node {
-            id
-            handle
-            images(first: 1) {
-              edges {
-                node {
-                  height
-                  width
-                  url
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
+
 export const allCollections = gql`
 query MyQuery {
   collections(first: 2) {

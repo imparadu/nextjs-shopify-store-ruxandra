@@ -3,8 +3,9 @@ import get from 'lodash/get';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const ProductCard = ({ product }) => {
+const ProductCard = (props) => {
   // console.log(product)
+  const {product} = props
   // const id = product.node.id;
   // const handle = product.node.handle;
   // const title = product.node.title;
