@@ -3,16 +3,10 @@
 import { Fragment, useEffect, useState } from 'react';
 import ProductCard from '../components/ProductCard';
 
-import { callShopify, AllProducts } from '../helpers/shopify';
+import { callShopify, AllProducts, Portfolio } from '../helpers/shopify';
 
 const Home = ({ products }) => {
-  // const [data, setData] = useState();
-  // console.log(products);
-  // useEffect(() => {
-  //   const fetchData = async () => await callShopify(AllProducts);
-  //   const response = fetchData();
-  //   console.log('response=', response);
-  // }, []);
+  
   return (
     <Fragment>
       <div className="justify-center flex">
