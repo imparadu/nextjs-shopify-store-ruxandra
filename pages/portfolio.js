@@ -1,30 +1,33 @@
 import React from 'react';
+import get from 'lodash/get';
 import ProductCard from '@/components/ProductCard';
-import { callShopify, queryPortfolio } from '@/helpers/shopify';
+import { callShopify, allCollections } from '@/helpers/shopify';
 
-function Portfolio() {
+function Portfolio({ portfolioProducts }) {
   return (
     <>
-      <h1>Portfolio</h1>
-      {/* <div className="justify-center flex">
+      <div className="justify-center flex">
         <div className="columns-4 gap-0 max-w-9/10">
-          {products.map((product) => {
+          {portfolioProducts.map((product) => {
             return <ProductCard key={product.node.id} product={product} />;
           })}
         </div>
-      </div> */}
+      </div>
     </>
   );
 }
 
 export async function getStaticProps() {
-  const response = await callShopify(queryPortfolio);
-  console.log(response.data.collection.products.edges);
+  const response = await callShopify(allCollections);
+  const portfolioCollection = get(response, ['data', 'collections', 'edges', '0']);
+  const portfolioProducts = portfolioCollection.node.products.edges;
+  const images = portfolioProducts[0].node.images.nodes;
+  console.log('portfolioCollection =', portfolioCollection,'portfolioProducts=', portfolioProducts , 'images = ', images);
   //   const products = response.data.products.edges;
 
   return {
     props: {
-      //   products,
+        portfolioProducts,
     },
   };
 }

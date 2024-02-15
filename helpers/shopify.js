@@ -47,11 +47,6 @@ export const AllProducts = gql`
               }
             }
           }
-          priceRange {
-            maxVariantPrice {
-              amount
-            }
-          }
         }
       }
     }
@@ -82,3 +77,28 @@ export const queryPortfolio = gql`
     }
   }
 `;
+export const allCollections = gql`
+query MyQuery {
+  collections(first: 2) {
+    edges {
+      node {
+        products(first: 10) {
+          edges {
+            node {
+              handle
+              id
+              images(first: 1) {
+                nodes {
+                  height
+                  width
+                  url
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}`
+;
