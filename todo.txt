@@ -1,1 +1,10 @@
-1
+1. getStaticProps scris intr-un singur loc in higher level component care sa o distribuie ca props celorlalte
+2. facut curatenie prin functii/ locatii
+3. pagina de contact
+4. link instagram
+5. buton back to top
+6. pus logo
+7. fonturi
+8. optimizare css toate displayurile
+9. shop - pagina de produs - cart - checkout
+10. testat shopify fara cont platit + alte platforme contentful
