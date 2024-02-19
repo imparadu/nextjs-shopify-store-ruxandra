@@ -10,25 +10,23 @@ export default function Navbar() {
           </span>
         </div>
       </Link>
-      <Link href="/portfolio" passHref>
+      <Link href="/sketchbook" passHref>
         <div className="flex justify-center mx-auto py-4">
           <span className="text-xl font-bold tracking-tight ml-1">
             Sketchbook
           </span>
         </div>
       </Link>
-      <Link href="/portfolio" passHref>
+      <Link href="https://www.instagram.com/chocolatechiphelmet/" target="_blank" passHref>
         <div className="flex justify-center mx-auto py-4">
           <span className="text-xl font-bold tracking-tight ml-1">
             Instagram
           </span>
         </div>
       </Link>
-      <Link href="/portfolio" passHref>
+      <Link href="/contact" passHref>
         <div className="flex justify-center mx-auto py-4">
-          <span className="text-xl font-bold tracking-tight ml-1">
-            Contact
-          </span>
+          <span className="text-xl font-bold tracking-tight ml-1">Contact</span>
         </div>
       </Link>
     </div>

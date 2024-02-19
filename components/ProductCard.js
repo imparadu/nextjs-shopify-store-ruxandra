@@ -10,7 +10,7 @@ const ProductCard = (props) => {
   // const handle = product.node.handle;
   // const title = product.node.title;
   const imageNode = product.node.images.nodes[0];
-  console.log(imageNode)
+  // console.log(imageNode)
   // const price = product.node.priceRange.maxVariantPrice.amount.replace(
   //   /\.0/g,
   //   ''

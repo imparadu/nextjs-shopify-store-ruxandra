@@ -30,29 +30,6 @@ export async function callShopify(query, variables = {}) {
 
 const gql = String.raw;
 
-export const AllProducts = gql`
-  query Products {
-    products(first: 22) {
-      edges {
-        node {
-          id
-          title
-          handle
-          images(first: 10) {
-            edges {
-              node {
-                url
-                width
-                height
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
-
 export const allCollections = gql`
 query MyQuery {
   collections(first: 2) {

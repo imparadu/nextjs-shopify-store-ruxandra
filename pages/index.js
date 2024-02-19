@@ -5,7 +5,7 @@ import ProductCard from '../components/ProductCard';
 
 import { callShopify, AllProducts, allCollections } from '../helpers/shopify';
 
-const Home = ({ products }) => {
+const Home  = ({ products }) => {
   return (
     <Fragment>
       <div className="justify-center flex">

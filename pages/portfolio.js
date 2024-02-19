@@ -19,18 +19,18 @@ function Portfolio({ portfolioProducts }) {
 
 export async function getStaticProps() {
   const response = await callShopify(allCollections);
-  const portfolioCollection = get(response, ['data', 'collections', 'edges', '0']);
-  const sketchbookCollection = get(response, ['data', 'collections', 'edges', '1']);
+  const portfolioCollection = get(response, [
+    'data',
+    'collections',
+    'edges',
+    '0',
+  ]);
   const portfolioProducts = portfolioCollection.node.products.edges;
-  const sketchbookProducts = sketchbookCollection.node.products.edges;
   const images = portfolioProducts[0].node.images.nodes;
-  console.log('portfolioCollection =', portfolioCollection,'portfolioProducts=', portfolioProducts , 'images = ', images);
-  //   const products = response.data.products.edges;
 
   return {
     props: {
       portfolioProducts,
-      sketchbookProducts,
     },
   };
 }
