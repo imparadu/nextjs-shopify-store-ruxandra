@@ -6,3 +6,5 @@ footer
 optimizare css toate displayurile
 shop - pagina de produs - cart - checkout
 testat shopify fara cont platit + alte platforme contentful
+testing
+123
