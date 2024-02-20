@@ -7,8 +7,8 @@ import { callShopify, allCollections } from '@/helpers/shopify';
 function Portfolio({ portfolioProducts }) {
   return (
     <>
-      <div className="justify-center flex">
-        <div className="columns-4 gap-0 max-w-9/10">
+      <div className="justify-center flex flex-col ">
+        <div className="columns-4 gap-0 mx-10">
           {portfolioProducts.map((product) => {
             return (
               <ProductCard
@@ -18,7 +18,7 @@ function Portfolio({ portfolioProducts }) {
             );
           })}
         </div>
-        
+        <BackToTopButton />
       </div>
     </>
   );
