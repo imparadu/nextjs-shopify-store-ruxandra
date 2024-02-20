@@ -7,7 +7,7 @@
   src: local('Josefin Sans'),
     url('/Josefin_Sans/JosefinSans-VariableFont_wght.ttf') format('truetype');
   font-weight: 300;
-
+}
 html,
 body {
   font-family: 'Josefin Sans', sans-serif;
