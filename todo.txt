@@ -1,10 +1,7 @@
-pagina de contact
+formular contact cu https://formspree.io/
+pagina de contact fara scroll
 buton back to top
-pus logo
-fonturi
 footer
 optimizare css toate displayurile
 shop - pagina de produs - cart - checkout
 testat shopify fara cont platit + alte platforme contentful
-testing
-123
