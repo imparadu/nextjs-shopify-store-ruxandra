@@ -1,17 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @font-face {
   font-family: 'Josefin Sans';
   src: local('Josefin Sans'),
     url('/Josefin_Sans/JosefinSans-VariableFont_wght.ttf') format('truetype');
   font-weight: 300;
-}
 
 html,
 body {
   font-family: 'Josefin Sans', sans-serif;
   line-height: 1;
+  scroll-behavior: smooth;
 }
 
 input {

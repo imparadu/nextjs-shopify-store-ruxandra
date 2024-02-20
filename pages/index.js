@@ -2,7 +2,6 @@
 import get from 'lodash/get';
 import { Fragment, useEffect, useState } from 'react';
 import ProductCard from '../components/ProductCard';
-
 import { callShopify, AllProducts, allCollections } from '../helpers/shopify';
 
 const Home  = ({ products }) => {
