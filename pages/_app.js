@@ -11,21 +11,4 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
-export async function getStaticProps() {
-  const response = await callShopify(allCollections);
-  const portfolioCollection = get(response, [
-    'data',
-    'collections',
-    'edges',
-    '1',
-  ]);
-  const products = portfolioCollection.node.products.edges;
-
-  return {
-    props: {
-      products,
-    },
-  };
-}
-
 export default MyApp;
