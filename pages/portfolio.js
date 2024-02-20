@@ -1,6 +1,7 @@
 import React from 'react';
 import get from 'lodash/get';
 import ProductCard from '@/components/ProductCard';
+import BackToTopButton from '@/components/BackToTopButton';
 import { callShopify, allCollections } from '@/helpers/shopify';
 
 function Portfolio({ portfolioProducts }) {
@@ -9,9 +10,15 @@ function Portfolio({ portfolioProducts }) {
       <div className="justify-center flex">
         <div className="columns-4 gap-0 max-w-9/10">
           {portfolioProducts.map((product) => {
-            return <ProductCard key={product.node.id} product={product} />;
+            return (
+              <ProductCard
+                key={product.node.id}
+                product={product}
+              />
+            );
           })}
         </div>
+        
       </div>
     </>
   );

@@ -1,5 +1,5 @@
 // components/layout.js
-
+import BackToTopButton from '@/components/BackToTopButton';
 import Header from "./Header"
 import Footer from "./Footer"
 import Navbar from "./Navbar"
@@ -9,7 +9,9 @@ const Layout = ({ children }) => {
     <div>
       <Header />
       <Navbar />
-      <main>{children}</main>
+      <main>{children}
+      <BackToTopButton />
+      </main>
       <Footer />
     </div>
   )
