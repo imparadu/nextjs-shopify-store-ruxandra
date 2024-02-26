@@ -8,14 +8,9 @@ function Portfolio({ portfolioProducts }) {
   return (
     <>
       <div className="justify-center flex flex-col ">
-        <div className="columns-4 gap-0 mx-10">
+        <div className="xxs:columns-1 xxs:mx-0 xs:columns-1 xs:mx-0 s:columns-2 md:columns-3 lg:columns-4 gap-0 mx-0">
           {portfolioProducts.map((product) => {
-            return (
-              <ProductCard
-                key={product.node.id}
-                product={product}
-              />
-            );
+            return <ProductCard key={product.node.id} product={product} />;
           })}
         </div>
         <BackToTopButton />

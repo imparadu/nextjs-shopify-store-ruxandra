@@ -7,7 +7,7 @@ function Sketchbook({ sketchbookProducts }) {
   return (
     <>
       <div className="justify-center flex">
-        <div className="columns-4 gap-0 max-w-9/10">
+        <div className="xxs:columns-1 xs:columns-1 s:columns-2 md:columns-3 lg:columns-4 gap-0 mx-10">
           {sketchbookProducts.map((product) => {
             return <ProductCard key={product.node.id} product={product} />;
           })}
