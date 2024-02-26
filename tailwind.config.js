@@ -15,6 +15,9 @@ module.exports = {
     fontFamily: {
       'josefin': ['JosefinSans', 'serif'],
     },
+    fontSize : {
+      '17rem': ['1.7rem', '1']
+    },
     extend: {
       colors: {
         palette: {

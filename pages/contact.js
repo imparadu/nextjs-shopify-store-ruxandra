@@ -6,7 +6,7 @@ function Contact() {
   return (
     <>
       <div className="flex justify-around items-center w-full h-full">
-        <div className="w-1/2 h-full">
+        <div className="w-[40%] h-full">
           <h3 className="">Get in touch:</h3>
           <form className="">
             <div className="w-full h-full flex flex-col justify-between items-center">
@@ -44,8 +44,12 @@ function Contact() {
           </form>
           <p>Or send email at chocolatechiphelmet@gmail.com</p>
         </div>
-        <div className="w-2/5">
-          <img src="/contact_sketch.jpg" alt="" className="" />
+        <div className="max-w-[40%]">
+          <img
+            src="/contact_sketch.jpg"
+            alt=""
+            className=""
+          />
         </div>
       </div>
     </>
