@@ -2,6 +2,7 @@ formular contact cu https://formspree.io/
 pagina de contact fara scroll
 buton back to top
 footer
-optimizare css toate displayurile
+tradus css traditional in tailwind
+optimizare css toate displayurile cu tailwind
 shop - pagina de produs - cart - checkout
 testat shopify fara cont platit + alte platforme contentful
