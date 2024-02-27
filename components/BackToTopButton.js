@@ -25,7 +25,7 @@ export default function BackToTopButton() {
   }, []);
 
   return (
-    <div className={`right-12 bottom-0 place-self-end transition-all ease-in-out duration-300 ${isVisible ? 'sticky' : 'hidden'}`}>
+    <div className={`right-5 bottom-0 place-self-end transition-all ease-in-out duration-300 ${isVisible ? 'sticky' : 'hidden'}`}>
       <button onClick={onClick} className='cursor-pointer bg-transparent leading-none'>
         <img className='w-20 h-10 opacity-80'
           alt="backToTopButton"

@@ -34,7 +34,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         mobil: "url('/Logo horizontal mobile-03.svg')",
-        desktop: "url('/Logo.svg')",
+        desktop: "url('/Logo_maybe.png')",
       },
       colors: {
         palette: {
