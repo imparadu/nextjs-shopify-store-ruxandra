@@ -9,21 +9,7 @@ module.exports = {
     maxWidth: {
       '9/10': '90%',
     },
-    colors: {
-      albastru: '#6fbbcd',
-      white: 'rgb(255 255 255)',
-      black: 'rgb(0 0 0)',
-      aliceblue: '#f0f8ff',
-    },
-    fontFamily: {
-      josefin: ['JosefinSans', 'serif'],
-    },
-    fontSize: {
-      '17rem': ['1.7rem', '1'],
-      '1.1rem': ['1.1rem', '1'],
-      '1rem': ['1rem', '1'],
-      '08rem': ['0.8rem', '1'],
-    },
+
     screens: {
       xxs: [{ min: '100px', max: '374px' }],
       xs: [{ min: '375px', max: '600px' }],
@@ -37,9 +23,20 @@ module.exports = {
         desktop: "url('/Logo_maybe.png')",
       },
       colors: {
+        albastru: '#6fbbcd',
+        aliceblue: '#f0f8ff',
         palette: {
           primary: '#000000',
         },
+      },
+      fontSize: {
+        '17rem': ['1.7rem', '1'],
+        '1.1rem': ['1.1rem', '1'],
+        '1rem': ['1rem', '1'],
+        '08rem': ['0.8rem', '1'],
+      },
+      fontFamily: {
+        josefin: ['JosefinSans', 'serif'],
       },
     },
   },

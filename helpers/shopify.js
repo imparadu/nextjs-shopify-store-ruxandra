@@ -31,20 +31,21 @@ export async function callShopify(query, variables = {}) {
 const gql = String.raw;
 
 export const allCollections = gql`
-query MyQuery {
-  collections(first: 2) {
-    edges {
-      node {
-        products(first: 10) {
-          edges {
-            node {
-              handle
-              id
-              images(first: 1) {
-                nodes {
-                  height
-                  width
-                  url
+  query MyQuery {
+    collections(first: 2) {
+      edges {
+        node {
+          products(first: 10) {
+            edges {
+              node {
+                handle
+                id
+                images(first: 1) {
+                  nodes {
+                    height
+                    width
+                    url
+                  }
                 }
               }
             }
@@ -53,5 +54,40 @@ query MyQuery {
       }
     }
   }
-}`
-;
+`;
+
+export const shopCollection = gql`
+  {
+    shop {
+      name
+    }
+    collection(id: "gid://shopify/Collection/619467899207") {
+      title
+      products(first: 10) {
+        edges {
+          node {
+            id
+            priceRange {
+              maxVariantPrice {
+                amount
+                currencyCode
+              }
+            }
+            description
+            images(first: 2) {
+              nodes {
+                id
+                height
+                width
+                url
+              }
+            }
+            descriptionHtml
+            title
+            handle
+          }
+        }
+      }
+    }
+  }
+`;
