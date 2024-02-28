@@ -1,25 +1,24 @@
 // pages/index.js
+import React from 'react';
 import get from 'lodash/get';
 import { Fragment, useEffect, useState } from 'react';
 import ProductCard from '../components/ProductCard';
-import { callShopify, AllProducts, allCollections } from '../helpers/shopify';
+import BackToTopButton from '@/components/BackToTopButton';
+import Portfolio from './portfolio';
+import { callShopify, allCollections } from '../helpers/shopify';
 
-const Home  = ({ products }) => {
+const Home  = ({ portfolioProducts }) => {
   return (
     <Fragment>
-      <div className="justify-center flex">
-        <div className="columns-4 gap-0 max-w-9/10">
-          {products.map((product) => {
-            return (
-              <ProductCard
-                key={product.node.id}
-                product={product}
-              />
-            );
+      { <div className="justify-center flex flex-col ">
+        <div className="xxs:columns-1 xxs:mx-0 xs:columns-1 xs:mx-0 s:columns-2 md:columns-3 lg:columns-4 gap-0 mx-0">
+          {portfolioProducts.map((product) => {
+            return <ProductCard key={product.node.id} product={product} />;
           })}
         </div>
-      </div>
-    </Fragment>
+        <BackToTopButton />
+      </div> }
+     </Fragment>
   );
 };
 
@@ -29,13 +28,13 @@ export async function getStaticProps() {
     'data',
     'collections',
     'edges',
-    '1',
+    '0',
   ]);
-  const products = portfolioCollection.node.products.edges;
+  const portfolioProducts = portfolioCollection.node.products.edges;
 
   return {
     props: {
-      products,
+      portfolioProducts,
     },
   };
 }

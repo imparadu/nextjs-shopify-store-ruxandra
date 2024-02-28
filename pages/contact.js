@@ -46,7 +46,7 @@ function Contact() {
             Or send email at chocolatechiphelmet@gmail.com
           </p>
         </div>
-        <div className="max-w-[40%] xxs:hidden xs:hidden">
+        <div className="max-w-[30%] xxs:hidden xs:hidden">
           <img src="/contact_sketch.jpg" alt="" className="" />
         </div>
       </div>
