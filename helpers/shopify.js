@@ -1,5 +1,7 @@
 // helpers/shopify.js
 
+// import { GraphQLClient } from "graphql-request";
+
 const domain = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN;
 const storefrontAccessToken =
   process.env.NEXT_PUBLIC_SHOPIFY_STORE_FRONT_ACCESS_TOKEN;
@@ -26,6 +28,34 @@ export async function callShopify(query, variables = {}) {
     console.log(error);
     throw new Error('Could not fetch products!');
   }
+}
+
+export async function addToCart(id, quantity) {
+  const createCartMutation = gql`
+  mutation createCart($cartInput: CartInput) {
+    cartCreate(input: $cartInput) {
+      cart {
+        id
+      }
+    }
+  }
+`;
+const asd = {
+  cartInput: {
+    lines: [
+      {
+        quantity: parseInt(quantity),
+        merchandiseId: id,
+      },
+    ],
+  },
+};
+try {
+  return await callShopify(createCartMutation, asd);
+
+} catch (error) {
+  throw new Error(error);
+}
 }
 
 const gql = String.raw;
