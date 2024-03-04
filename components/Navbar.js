@@ -37,6 +37,14 @@ export default function Navbar() {
             Contact
           </Link>
         </li>
+        <li className="px-3 items-center xxs:px-1 xs:text-1rem hover:text-albastru transition duration-500 ease-in-out">
+          <Link
+            href="/shop"
+            className="xxs:text-08rem xs:text-1rem text-17rem"
+          >
+            Shop
+          </Link>
+        </li>
       </ul>
     </div>
   );

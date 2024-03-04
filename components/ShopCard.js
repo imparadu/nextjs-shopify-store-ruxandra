@@ -45,7 +45,9 @@ const ProductCard = (props) => {
         <p className="text-center">
           <button
             
-            onClick={() => addToCart(id, 1)}
+            onClick={() => {
+              console.log(id)
+              addToCart()}}
           >
             Add to Cart
           </button>

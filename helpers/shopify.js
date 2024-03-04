@@ -21,7 +21,7 @@ export async function callShopify(query, variables = {}) {
 
   try {
     const data = await fetch(fetchUrl, fetchOptions).then((response) =>
-    response.json() 
+      response.json()
     );
     return data;
   } catch (error) {
@@ -30,21 +30,89 @@ export async function callShopify(query, variables = {}) {
   }
 }
 
-export async function addToCart(id, quantity) {
-  const createCartMutation = gql`
-  mutation createCart($cartInput: CartInput) {
-    cartCreate(input: $cartInput) {
+export async function addToCart() {
+  const numericVariantId = '9034792534343'; // Your numeric product variant ID
+  const encodedVariantId = btoa(
+    `gid://shopify/ProductVariant/${numericVariantId}`
+  );
+  console.log(encodedVariantId); // Use this encoded ID in your GraphQL mutation
+  //   const createCartMutation = gql`
+  //   mutation createCart {
+  //     cartCreate(
+  //       input: {
+  //       lines: [
+  //         {
+  //           quantity: 1,
+  //           merchandiseId: "gid://shopify/Product/9034790863175",
+  //         },
+  //       ],
+  //     })
+  //     {
+  //       cart {
+  //         id
+  //         createdAt
+  //         updatedAt
+  //         lines(first: 5) {
+  //           edges {
+  //             node {
+  //               id
+  //               merchandise {
+  //                 ... on ProductVariant {
+  //                   id
+  //                 }
+  //               }
+  //             }
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // `;
+  // const variables = {
+  //   cartInput: {
+  //     lines: [
+  //       {
+  //         quantity: parseInt(quantity),
+  //         merchandiseId: id,
+  //       },
+  //     ],
+  //   },
+  // };
+  try {
+    console.log('calling shopify');
+    return await callShopify(createCartMutation);
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+const gql = String.raw;
+
+export const createCartMutation = gql`
+  mutation MyMutation {
+    cartCreate(
+      input: {
+        lines: [{
+          merchandiseId: "gid://shopify/ProductVariant/49058297512263"
+          quantity: 1
+        }]
+      }
+    ) {
       cart {
         id
+        createdAt
+        updatedAt
         lines(first: 5) {
           edges {
             node {
-              id
               merchandise {
                 ... on ProductVariant {
-                  id
+                  product {
+                    title
+                  }
                 }
               }
+              quantity
             }
           }
         }
@@ -52,26 +120,6 @@ export async function addToCart(id, quantity) {
     }
   }
 `;
-const variables = {
-  cartInput: {
-    lines: [
-      {
-        quantity: parseInt(quantity),
-        merchandiseId: id,
-      },
-    ],
-  },
-};
-try {
-  console.log('calling shopify', id, quantity)
-  return await callShopify(createCartMutation, variables);
-
-} catch (error) {
-  throw new Error(error);
-}
-}
-
-const gql = String.raw;
 
 export const allCollections = gql`
   query MyQuery {
@@ -101,9 +149,6 @@ export const allCollections = gql`
 
 export const shopCollection = gql`
   {
-    shop {
-      name
-    }
     collection(id: "gid://shopify/Collection/619467899207") {
       title
       products(first: 10) {
@@ -128,9 +173,16 @@ export const shopCollection = gql`
             descriptionHtml
             title
             handle
+            variants(first: 10) {
+              edges {
+                node {
+                  id
+                }
+              }
+            }
           }
         }
       }
     }
-  }
-`;
+  }`
+;
