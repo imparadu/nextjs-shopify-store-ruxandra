@@ -1,3 +1,8 @@
 formular contact cu https://formspree.io/
-shop - pagina de produs - cart - checkout
+shop - product page - cart - checkout
+stare cart
+dropdown cart - lista produse adaugate, cost individual, field cantitate, buton remove, total
+checkout page - produse, cost, total
+product page
+login - OAuth? google login
 testat shopify fara cont platit + alte platforme contentful

@@ -4,7 +4,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { addToCart } from '@/helpers/shopify';
 
-
 const ProductCard = (props) => {
   // console.log(product)
   const { product } = props;
@@ -18,9 +17,8 @@ const ProductCard = (props) => {
     ''
   );
   const currency = product.node.priceRange.maxVariantPrice.currencyCode;
-  function buton() {
-    console.log(id);
-  }
+  const variant = product.node.variants.edges[0].node.id;
+
   return (
     <div className="overflow-hidden  m-2 bg-slate-100">
       {/* <Link href={`/${handle}`} passHref> */}
@@ -43,14 +41,7 @@ const ProductCard = (props) => {
         </p>
         <p className="text-center text-gray-700 mb-4">{id}</p>
         <p className="text-center">
-          <button
-            
-            onClick={() => {
-              console.log(id)
-              addToCart()}}
-          >
-            Add to Cart
-          </button>
+          <button onClick={() => addToCart(variant, 1)}>Add to Cart</button>
         </p>
       </div>
     </div>
