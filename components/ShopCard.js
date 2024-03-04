@@ -45,7 +45,7 @@ const ProductCard = (props) => {
         <p className="text-center">
           <button
             
-            onClick={addToCart}
+            onClick={() => addToCart(id, 1)}
           >
             Add to Cart
           </button>

@@ -21,7 +21,7 @@ export async function callShopify(query, variables = {}) {
 
   try {
     const data = await fetch(fetchUrl, fetchOptions).then((response) =>
-      response.json()
+    response.json() 
     );
     return data;
   } catch (error) {
@@ -36,11 +36,23 @@ export async function addToCart(id, quantity) {
     cartCreate(input: $cartInput) {
       cart {
         id
+        lines(first: 5) {
+          edges {
+            node {
+              id
+              merchandise {
+                ... on ProductVariant {
+                  id
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
 `;
-const asd = {
+const variables = {
   cartInput: {
     lines: [
       {
@@ -51,7 +63,8 @@ const asd = {
   },
 };
 try {
-  return await callShopify(createCartMutation, asd);
+  console.log('calling shopify', id, quantity)
+  return await callShopify(createCartMutation, variables);
 
 } catch (error) {
   throw new Error(error);
