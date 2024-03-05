@@ -1,46 +1,38 @@
 import { useRouter } from 'next/router';
-import { callShopify, shopCollection } from '@/helpers/shopify';
-import get from 'lodash/get';
+import { callShopify, createProductQuery } from '@/helpers/shopify';
+import { pathToString } from '@/helpers/pathToString';
+import { useEffect, useState } from 'react';
 
-const ProductPage = ({ shopProducts }) => {
+const ProductPage = () => {
   const router = useRouter();
-  if (router.isFallback) {
-    return <div>Loading...</div>;
-  }
-  const { path } = router.query;
-  console.log(shopProducts);
+  const [product, setProduct] = useState();
+  const { id } = router.query;
+  const productId = pathToString(id);
+
+  const getProduct = async () => {
+    try {
+      const product = await callShopify(createProductQuery, { id: productId });
+      setProduct(product);
+    } catch (error) {
+      throw new Error(error);
+    }
+  };
+  console.log(product);
+
+  useEffect(() => {
+    if (productId) {
+      getProduct(productId);
+    }
+  }, [productId]);
   return (
     <div>
-      <h1>{}</h1>
+      <h1>{product?.data?.product?.description}</h1>
 
       {/* <p>{product.description}</p> */}
     </div>
   );
 };
 
-export async function getStaticPaths() {
-  const paths = [{ params: { id: '1' } }];
-  // Add more paths dynamically based on your data source
-
-  return { paths, fallback: true };
-}
-
-export async function getStaticProps() {
-  const response = await callShopify(shopCollection);
-  const shopProducts = get(response, [
-    'data',
-    'collection',
-    'products',
-    'edges',
-  ]);
-  const productPrice = shopProducts[0].node.priceRange;
-  // console.log('product price 33', productPrice);
-
-  return {
-    props: {
-      shopProducts,
-    },
-  };
-}
-
 export default ProductPage;
+
+export async function getProductG(id) {}

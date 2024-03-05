@@ -6,3 +6,4 @@ checkout page - produse, cost, total
 product page
 login - OAuth? google login
 testat shopify fara cont platit + alte platforme contentful
+ORDINE SI CURATENIE
