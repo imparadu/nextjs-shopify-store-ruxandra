@@ -167,3 +167,35 @@ export const shopCollection = gql`
     }
   }
 `;
+
+export async function getProduct(variant) {
+  const createProductQuery = gql`
+      query getProduct ($id: id){
+        product(id: $id) {
+          description
+          handle
+          images(first: 10) {
+            nodes {
+              url
+              width
+              height
+            }
+          }
+          priceRange {
+            maxVariantPrice {
+              amount
+              currencyCode
+            }
+          }
+          variants(first: 10) {
+            edges {
+              node {
+                id
+              }
+            }
+          }
+          title
+      }
+    }
+  }`;
+}

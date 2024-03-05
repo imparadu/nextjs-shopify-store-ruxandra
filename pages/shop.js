@@ -28,10 +28,6 @@ export async function getStaticProps() {
     'products',
     'edges',
   ]);
-  //   const shopProducts = getShopCollection;
-  const productPrice = shopProducts[0].node;
-  console.log(productPrice);
-  //   const images = portfolioProducts[0].node.images.nodes;
 
   return {
     props: {
