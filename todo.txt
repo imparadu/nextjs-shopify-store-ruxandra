@@ -3,7 +3,10 @@ shop - product page - cart - checkout
 stare cart
 dropdown cart - lista produse adaugate, cost individual, field cantitate, buton remove, total
 checkout page - produse, cost, total
-product page
+product page - poza(poze), dropdown pt variante, dropdown cantitate, add to cart
 login - OAuth? google login
 testat shopify fara cont platit + alte platforme contentful
 ORDINE SI CURATENIE
+
+intri pe site
+call functie de cartCreate()

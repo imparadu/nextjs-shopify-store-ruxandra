@@ -8,7 +8,7 @@ const ProductCard = (props) => {
   // console.log(product)
   const { product } = props;
   const id = product.node.id;
-  // const handle = product.node.handle;
+  const handle = product.node.handle;
   const title = product.node.title;
   const imageNode = product.node.images.nodes[0];
   // console.log(imageNode)
@@ -21,7 +21,7 @@ const ProductCard = (props) => {
 
   return (
     <div className="overflow-hidden  m-2 bg-slate-100">
-      {/* <Link href={`/${handle}`} passHref> */}
+      <Link href={`/${handle}`} passHref>
 
       <Image
         alt=""
@@ -31,7 +31,7 @@ const ProductCard = (props) => {
         className="p-2"
       />
 
-      {/* </Link> */}
+      </Link>
       <div>
         <p className="text-center text-l font-semibold mx-4 mt-4 mb-1">
           {title}

@@ -23,6 +23,7 @@ export async function callShopify(query, variables = {}) {
     const data = await fetch(fetchUrl, fetchOptions).then((response) =>
       response.json()
     );
+    console.log(data.data.cartCreate)
     return data;
   } catch (error) {
     console.log(error);
@@ -66,9 +67,14 @@ export async function addToCart(variant, quantity) {
       ],
     },
   };
+  //if(counter === 0){try creatercart}
+  // else try additem
   try {
     console.log('calling shopify', 'variant= ', variant);
-    return await callShopify(createCartMutation, variables);
+    const asd = await callShopify(createCartMutation, variables);
+    // console.log(asd)
+return asd
+    // return await callShopify(createCartMutation, variables);
   } catch (error) {
     throw new Error(error);
   }
