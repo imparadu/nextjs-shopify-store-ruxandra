@@ -36,6 +36,9 @@ const ProductCard = (props) => {
         <p className="text-center text-l font-semibold mx-4 mt-4 mb-1">
           {title}
         </p>
+        <p className="text-center text-l font-semibold mx-4 mt-4 mb-1">
+          variant {variant}
+        </p>
         <p className="text-center text-gray-700 mb-4">
           {price} {currency}
         </p>

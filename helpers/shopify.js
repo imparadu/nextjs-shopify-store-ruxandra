@@ -23,7 +23,7 @@ export async function callShopify(query, variables = {}) {
     const data = await fetch(fetchUrl, fetchOptions).then((response) =>
       response.json()
     );
-    console.log(data.data.cartCreate)
+    // console.log(data.data.cartCreate);
     return data;
   } catch (error) {
     console.log(error);
@@ -31,7 +31,32 @@ export async function callShopify(query, variables = {}) {
   }
 }
 
+let response = null;
+let cartNumber = null;
+
 export async function addToCart(variant, quantity) {
+  // const addProductToCart = gql`
+  //   mutation addProductToCart ($cartPayload: CartLinesAddPayload) {
+  //     cartLinesAdd ($cartPayload) {
+  //       cart {
+  //         id
+  //       }
+  //     }
+  //   }
+  // `;
+  const addProductToCart = gql`
+    mutation MyMutation($cartId: ID!, $merchandiseId: ID!, $quantity: Int!) {
+      cartLinesAdd(
+        cartId: $cartId
+        lines: { merchandiseId: $merchandiseId, quantity: $quantity }
+      ) {
+        cart {
+          id
+        }
+      }
+    }
+  `;
+
   const createCartMutation = gql`
     mutation createCart($cartInput: CartInput) {
       cartCreate(input: $cartInput) {
@@ -57,28 +82,72 @@ export async function addToCart(variant, quantity) {
       }
     }
   `;
+  const addItemToCart = gql`
+    mutation createCart($cartInput: CartInput) {
+      cartCreate(input: $cartInput) {
+        cart {
+          id
+          createdAt
+          updatedAt
+          lines(first: 5) {
+            edges {
+              node {
+                merchandise {
+                  ... on ProductVariant {
+                    product {
+                      title
+                    }
+                  }
+                }
+                quantity
+              }
+            }
+          }
+        }
+      }
+    }
+  `;
+
   const variables = {
     cartInput: {
-      lines: [
-        {
-          quantity: parseInt(quantity),
-          merchandiseId: variant,
-        },
-      ],
+      cartInput: {
+        lines: [
+          {
+            quantity: parseInt(quantity),
+            merchandiseId: variant,
+          },
+        ],
+      },
+    },
+    cartPayload: {
+      cartId: cartNumber,
+      merchandiseId: variant,
+      quantity: 1,
     },
   };
-  //if(counter === 0){try creatercart}
-  // else try additem
   try {
-    console.log('calling shopify', 'variant= ', variant);
-    const asd = await callShopify(createCartMutation, variables);
-    // console.log(asd)
-return asd
-    // return await callShopify(createCartMutation, variables);
+    if (SWITCH.option) {
+      const response = await callShopify(
+        addProductToCart,
+        variables.cartPayload
+      );
+
+      console.log('exista deja', SWITCH.option, 'cart id=', cartNumber);
+      return response;
+    }
+    response = await callShopify(createCartMutation, variables.cartInput);
+    // const response = await callShopify(addProductToCart, variables.cartPayload);
+    cartNumber = response.data.cartCreate.cart.id;
+    variables.cartPayload.cartId = cartNumber;
+    console.log(cartNumber, SWITCH.option);
+    SWITCH.option = true;
+    return response;
   } catch (error) {
     throw new Error(error);
   }
 }
+console.log(response, 'outside the function');
+const SWITCH = { option: false };
 
 const gql = String.raw;
 
@@ -175,8 +244,7 @@ export const shopCollection = gql`
 `;
 
 export const createProductQuery = gql`
-  query getMyProduct($id: ID!)
-  {
+  query getMyProduct($id: ID!) {
     product(id: $id) {
       description
       handle
@@ -202,4 +270,5 @@ export const createProductQuery = gql`
       }
       title
     }
-  }`;
+  }
+`;

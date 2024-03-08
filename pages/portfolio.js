@@ -29,7 +29,7 @@ export async function getStaticProps() {
   ]);
   const portfolioProducts = portfolioCollection.node.products.edges;
   const images = portfolioProducts[0].node.images.nodes;
-
+  // console.log('in portfolio');
   return {
     props: {
       portfolioProducts,
